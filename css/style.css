@@ -1,8 +1,8 @@
 /* font-family: "RobotoLight"; */
 @font-face {
     font-family: "RobotoLight";
-	src: local('../fonts/Roboto-Light'), 
-	local('../fonts/Roboto-Light'), 
+	src: local('../fonts/Roboto-Light'),
+	local('../fonts/Roboto-Light'),
     url("../fonts/Roboto-Light.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
@@ -10,8 +10,8 @@
 /* font-family: "RobotoMedium"; */
 @font-face {
     font-family: "RobotoMedium";
-	src: local('../fonts/Roboto-Medium'), 
-	local('../fonts/Roboto-Medium'), 
+	src: local('../fonts/Roboto-Medium'),
+	local('../fonts/Roboto-Medium'),
     url("../fonts/Roboto-Medium.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
@@ -19,8 +19,8 @@
 /* font-family: "RobotoBold"; */
 @font-face {
     font-family: "RobotoBold";
-	src: local('../fonts/Roboto-Bold'), 
-	local('../fonts/Roboto-Bold'), 
+	src: local('../fonts/Roboto-Bold'),
+	local('../fonts/Roboto-Bold'),
     url("../fonts/Roboto-Bold.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
@@ -28,8 +28,8 @@
 /* fontAwesome */
 @font-face {
     font-family: "FontAwesome";
-	src: local('../fonts/font-awesome/fonts/fontawesome-webfont'), 
-	local('../fonts/font-awesome/fonts/fontawesome-webfont'), 
+	src: local('../fonts/font-awesome/fonts/fontawesome-webfont'),
+	local('../fonts/font-awesome/fonts/fontawesome-webfont'),
     url("../fonts/font-awesome/fonts/fontawesome-webfont.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
@@ -300,7 +300,7 @@ small{
 	color:#fff;
 }
 .send_form input{
-	
+
 }
 .formula{
 	width:653px;
@@ -436,7 +436,7 @@ small{
 	width: 100%;
 	background-color: #ffffff;
 	margin:0 auto;
-	padding: 46px 70px 0 126px;
+	padding: 46px 120px 0 120px;
 	box-sizing: border-box;
 	position: relative;
 }
@@ -510,7 +510,7 @@ small{
 }
 .page-activ-prev a.pagination-item,				/* редизайн */
 .page-activ-next a.pagination-item
-{	
+{
 	font-size: 18.74px;
 	line-height: 39px;
 	width: 39px;
@@ -524,7 +524,7 @@ small{
 	height: 50px;
 	background-color: #0077be;
 }
-.prompt 
+.prompt
 {
 	display: none;
 	position: absolute;
@@ -535,13 +535,13 @@ small{
 	font-size: 8.37px;
 	color: #0077be;
 }
-.wrap-prev-next .prompt 
+.wrap-prev-next .prompt
 {
 	display: block;
 	color: #b2c0ca;
 	text-transform: uppercase;
 }
-.page-activ .prompt 
+.page-activ .prompt
 {
 	bottom: -19px;
 }
@@ -554,45 +554,36 @@ small{
 {
 	color: #0077be;
 }*/
-.wrap-prev-next 
+.wrap-prev-next
 {
 	position: relative;
 	display: inline-block;
 	vertical-align: middle;
 }
+.right h1.title-page,
 .title-page 				/* редизайн */
 {
 	font-family: 'RobotoBold', Arial, sans-serif;
-	font-size: 25.02px;
-	line-height: 25.02px;
+	font-size: 35.51px;
+	line-height: 41px;
 	letter-spacing: 0;
-	color: #0077be;
-	padding-left: 82px;
-	margin-left: -60px;
-	margin-bottom: 17px;
+	color: #fff;
+	margin-bottom: 33px;
 	position: relative;
-}
-.title-page::before 				/* редизайн */
-{
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
-	content: '06';
-	font-family: 'RobotoBold', Arisl, sans-serif;
-	font-size: 55.09px;
-	letter-spacing: 0;
-	color: #dae4e9;
+    text-align: center;
+    background: #b4c2cb;
+    padding: 14px 10px;
 }
 .right h2  				/* редизайн */
 {
-	margin-top: 0;
 	font-family: 'RobotoLight', Arial, sans-serif;
-	font-size: 20.85px;
-	line-height: 20.85px;
+    font-weight: bold;
+	font-size: 22px;
+	line-height: 24px;
 	letter-spacing: 0;
-	color: #0077be;
-	margin-left: 53px;
+	color: #000;
+    padding:0;
+    margin: 0 0 21px 0;
 }
 /* редизайн Кастомизированный чекбоксы */
 /* Cначала обозначаем стили для IE8 и более старых версий
@@ -622,66 +613,64 @@ small{
 .checkbox:not(checked) {
   position: absolute;
   opacity: 0;
-  
+
 }
 .checkbox:not(checked) + label {
   position: relative; /* будем позиционировать псевдочекбокс относительно label */
-  padding: 0 0 0 34px; /* оставляем слева от label место под псевдочекбокс */
-  margin-left: 53px;
+  padding: 0 0 0 42px; /* оставляем слева от label место под псевдочекбокс */
 }
 /* Оформление чекбокса в выключенном состоянии. */
 .checkbox:not(checked) + label:before {								/* -- РАДИО-КНОПКА (НЕ УСТАНОВЛЕННАЯ) -- */
-  content: url('../img/radio.png');
+  content: '';
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: 0;
-  width: 14px;
-  height: 14px;
+  width: 24px;
+  height: 24px;
+  background: url('../img/radio.png')
   /*border-radius: 2px;*/
 }
+
 .checkbox.check:not(checked) + label:before {							/* -- ЧЕКБОКС (НЕ УСТАНОВЛЕННЫЙ) -- */
-  content: '\f0c8';
+  content: '';
+  display: block;
   color: #b2c0ca;
-  font-family: 'FontAwesome';
-  font-size: 14px;
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: 0;
-  width: 14px;
-  height: 14px;
-  /*border-radius: 2px;*/
+  width: 24px;
+  height: 24px;
+  background: url('../img/checkbox.png');
 }
 /* Меняем фон чекбокса, когда он включен. */
 .checkbox.check:checked + label:before {								/* -- ЧЕКБОКС (УСТАНОВЛЕННЫЙ) -- */
-  content: '\f14a';
-  color: #0078be;
-  font-family: 'FontAwesome';
-  font-size: 14px;
+  background-position: left -24px;
 }
 .checkbox:checked + label:before {									/* -- РАДИО-КНОПКА (УСТАНОВЛЕННАЯ) -- */
-  content: url('../img/radio-in.png');
+  background-position: left -24px;
 }
-.checkbox:checked + label p 
+.checkbox:checked + label p
 {
 	color: #0077be;
 }
 /* end редизайн Кастомизированные чекбоксы */
-.checkbox:not(checked) + label #other 
+.checkbox:not(checked) + label #other
 {
-	
+
 }
+.question .textinput,
 #other 											/* редизайн */
 {
-	max-width: 747px;
 	width: 100%;
-	height: 45px;
+	height: 43px;
 	box-sizing: border-box;
 	font-family: Arial, sans-serif;
 	font-size: 16.68px;
-	border: 1px solid #c2c5c7;
-	background-color: #f1f0ed;
-	padding: 0 32px;
-	margin: 14px 0 0 0;
+	border: 1px solid #b4c2cb;
+	background-color: #fff;
+	padding: 0 13px;
+	margin: 0;
+    border-radius: 4px;
 }
 /* редизайн placeholder */
 #other::-webkit-input-placeholder {color:#bdc1c1;}
@@ -698,16 +687,14 @@ small{
 	margin:0 0 30px;
 }
 .question{				/* редизайн */
-	margin:0 0 15px;
+	margin:0 0 20px;
 }
 .question.other			/* редизайн */
 {
-	margin: 0 0 30px;
+	margin: 0 0 51px;
 }
 .question.other	label		/* редизайн */
 {
-	margin-left: 53px;
-	max-width: 747px;
 }
 .question input{
 	float:left;
@@ -740,16 +727,10 @@ small{
     width:585px;*/
 	font-style: normal;
 	width: 100%;
-	font-size: 16.68px;
-	/*line-height: 16px;*/
+	font-size: 17px;
+	line-height: 25px;
 	letter-spacing: 0;
 	color: #231f20;
-}
-.question .textinput{
-	border: 1px solid #DEDEDE;
-    font-family: Georgia;
-    font-size: 14px;
-    padding: 2px 3px;
 }
 
 .question textarea{
@@ -782,7 +763,7 @@ a.btn_back, span.btn_back  		/* редизайн */
 	/*color: #0077be;*/
 	background:url(../img/btn-next-hover.png) 0 0 no-repeat;
 }
-.wrap-prev-next .blue-style + .prompt 
+.wrap-prev-next .blue-style + .prompt
 {
 	color: #0077be;
 }
@@ -880,39 +861,29 @@ select.input_txt{
    Footer
    =================== */
 .footer{					/* редизайн */
-	background: #f1f0ed;
-	min-height: 80px;
-	border-bottom: 2px solid #ffffff;
-	padding:14px 0 22px;
-	color:#b2c0ca;
+	background: #413f3f;
+	min-height: 104px;
+	color:#fff;
 	box-sizing: border-box;
 }
 .service-for					/* редизайн */
 {
-	display: inline-block;
-	vertical-align: bottom;
+	float:right;
+    text-align:right;
+    font-size:12px; line-height: 20px;
+    padding: 25px 118px 0 0;
 }
 .footer-link 					/* редизайн */
 {
-	display: inline-block;
-	vertical-align: top;
-}
-.service-for 					/* редизайн */
-{
-	font-family: 'RobotoBold', Arial, sans-serif;
-	font-size: 13.48px;
-	letter-spacing: 0;
-	color: #43535b;
-	max-width: 260px;
-	margin-right: 8.33%	/*100px*/
+	float:left;
+    margin: 30px 0 0 20px;
 }
 .footer-link 					/* редизайн */
 {
-	margin-right: 4.58%	/*55px*/
 }
-.footer-link:last-of-type 
+.footer-link:first-of-type
 {
-	margin-right: 0;
+	margin-left: 113px;
 }
 @font-face {
     font-family: "Nautilus";
@@ -927,7 +898,7 @@ select.input_txt{
 body {
 	font-family: "Arial", Times, serif;
 	color: #231f20;
-	background-color: #ecead4;
+	background-color: #b4c2cb;
 }
 .container {
 	width: 1000px;
@@ -950,7 +921,6 @@ footer > .container
 	padding: 0;
 	background-color: transparent;
 }
-header > .container:before,  				/*редизайн*/
 footer > .container:before
 {
     display: inline-block;
@@ -962,14 +932,6 @@ footer > .container:before   				/*редизайн*/
 {
 	height: 53px;
 }
-header > .container > nav  				/*редизайн*/
-{
-	display: inline-block;
-	vertical-align: bottom;
-	margin-top: 0;
-	margin-bottom: 10px;
-	width: calc(100% - 460px);
-}
 .logo {
 	display: inline-block;
 	float: left;
@@ -979,22 +941,32 @@ header > .container > nav  				/*редизайн*/
 	color: #ffffff;
 	font-size: 30.3px;
 	letter-spacing: 0;
-	display: inline-block;
+    text-align: center;
+    padding: 27px 0 0 0;
 	/*margin-top: 25px;
 	margin-left: 40px;*/
+}
+.heading-2 {
+	font-family: "RobotoLight", Arial, sans-serif;
+	color: #ffffff;
+	font-size: 16px;
+	letter-spacing: 0;
+    text-align: center;
+    padding: 7px 0 0 0;
 }
 .heading-small {
 	font-size: 20px;
 }
 nav {
-	margin-top: 10px;
+	padding: 27px 0 21px 0;
 }
 nav ul {
-	text-align: right;
+	text-align: center;
 }
 nav ul li {					/* редизайн */
 	display: inline-block;
 	font-size: 14.4px;
+    line-height: 26px;
 	margin-left: 32px;
 	font-family: 'RobotoLight', Arial, sans-serif;
 	letter-spacing: 0;
@@ -1008,25 +980,23 @@ nav ul li a					/* редизайн */
 {
 	text-decoration: none;
 	color: #ffffff;
-	padding-top: 45px;
 	position: relative;
 	display: block;
+    padding: 0 15px;
+    min-width: 114px;
+    border: 1px solid #fff;
+    border-radius: 4px;
 }
-nav ul li a::before					/* редизайн */
-{
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	content: url('../img/shape.png');
+nav ul li a:hover {
+    opacity:.9
 }
-nav ul li:first-of-type a::before					/* редизайн */
-{
-	content: url('../img/about_services.png');
+nav ul li.current a {
+    border:none;
+    padding:1px 16px;
+    background: url(../img/current.png);
 }
-nav ul li:last-of-type a::before					/* редизайн */
-{
-	content: url('../img/contacts.png');
+nav ul li.current a:hover {
+    opacity: 1;
 }
 .green-line {
 	height: 10px;
@@ -1054,10 +1024,10 @@ ul.breadcrumbs {
     margin: 0;
 }
 
-@media (min-width: 240px) and (max-width: 980px) 
+@media (min-width: 240px) and (max-width: 980px)
 {
 	header > .container > nav,
-	.heading 
+	.heading
 	{
 		display: block;
 		margin: 0 auto;
@@ -1069,11 +1039,11 @@ ul.breadcrumbs {
 	{
 		margin-bottom: 20px;
 	}
-	header > .container::before, footer > .container::before 
+	header > .container::before, footer > .container::before
 	{
 		content: none;
 	}
-	nav ul 
+	nav ul
 	{
 		text-align: center;
 	}
@@ -1083,8 +1053,13 @@ ul.breadcrumbs {
 	{
 		display: block;
 		margin: 0 auto 15px;
+        float: none;
+        text-align: center;
 	}
-	.content 
+    .footer-link:first-of-type {
+        margin:0 auto 15px auto
+    }
+	.content
 	{
 		padding: 26px 10px 0 10px;
 	}
@@ -1094,32 +1069,31 @@ ul.breadcrumbs {
 	{
 		margin-left: 0;
 	}
-	.question.other	label 
+	.question.other	label
 	{
 		margin-left: 0;
 	}
 }
-@media (min-width: 240px) and (max-width: 479px) 
-{	
+@media (min-width: 240px) and (max-width: 479px)
+{
 	li.page-activ-next,
-	li.page-activ-prev 
+	li.page-activ-prev
 	{
 		display: none;
 	}
 }
-.delimiter-line 
+.delimiter-line
 {
-	margin: 0 0 15px 53px;
-	max-width: 745px;
+	margin: 0 0 44px 0;
 	width: 100%;
-	height: 2px;
-	background-color: #c9c9c9;
+	height: 1px;
+	background-color: #b4c2cb;
 }
 .pagination li.second-page:first-of-type
 {
 	margin-left: 115px;
 }
-.popup-page 
+.popup-page
 {
 	display: none;
 	position: absolute;
@@ -1134,7 +1108,7 @@ ul.breadcrumbs {
 	text-align: left;
 	padding: 10px 15px;
 }
-.popup-page::after 
+.popup-page::after
 {
 	position: absolute;
 	bottom: 0px;
@@ -1147,17 +1121,17 @@ ul.breadcrumbs {
 	border-width: 12px 12px 0 12px;
 	border-color: #ffffff transparent transparent transparent;
 }
-/*.pagination-item:hover + .popup-page 
+/*.pagination-item:hover + .popup-page
 {
 	display: block;
 }*/
-.popup-page > a 
+.popup-page > a
 {
 	display: block;
 	text-decoration: none;
 	line-height: 22px;
 }
-.popup-link-prev 
+.popup-link-prev
 {
 	font-family: Arial, sans-serif;
 	font-size: 15.68px;
@@ -1174,7 +1148,7 @@ ul.breadcrumbs {
 	color: #808285;
 	cursor: default;
 }
-.popup-link-next 
+.popup-link-next
 {
 	font-family: Arial, sans-serif;
 	font-size: 15.68px;
@@ -1183,7 +1157,7 @@ ul.breadcrumbs {
 	color: #808285;
 	cursor: default;
 }
-.overlay 
+.overlay
 {
 	background: rgba(0,0,0,0.5);
 	position: absolute;
@@ -1194,11 +1168,46 @@ ul.breadcrumbs {
 	z-index: 1;
 	display: none;
 }
-.show 
+.show
 {
 	display: block;
 }
-.hide 
+.hide
 {
 	display: none;
 }
+
+.btn-next {margin:-10px 0 40px 42px; position:relative}
+.btn-next:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.btn-next input {display:inline-block; border-radius:7px; background:#fff; margin:0 20px 0 0; padding:0 20px; overflow:visible; outline:none; border:1px solid #0078be; height:47px; box-sizing:border-box; color:#0078be; text-align:center; font:17px/45px RobotoLight, sans-serif; -webkit-appearance:none; cursor:pointer}
+.btn-next input:hover {opacity:.9}
+.btn-next input:disabled {cursor:default; color:#b4c2cb; border-color:#b4c2cb; opacity:1}
+
+.question-count {position:absolute; right:-160px; top:-396px; width:148px; height:148px; color:#fff; background:url(../img/count.png); text-align:center; font-size:19px; line-height:23px}
+.question-count-text {padding:24px 0 0 0}
+.question-count-text span {display:block; font-size:60px; line-height:60px; font-weight:bold; margin:-3px 0 -6px 0}
+
+.btn-policy {display:inline-block; vertical-align:top}
+.btn-policy a {display:inline-block; border-radius:7px; background:#0078be; margin:0; text-decoration:none; padding:0 20px; overflow:visible; outline:none; border:1px solid #0078be; height:47px; box-sizing:border-box; color:#fff; text-align:center; font:17px/45px RobotoLight, sans-serif; -webkit-appearance:none; cursor:pointer}
+.btn-policy a:hover {opacity:.9}
+
+.policy {padding:0 50px}
+.policy-title {text-align:center; color:#000; font:35.5px/43px RobotoBold, sans-serif}
+.policy-text {font-size:17px; line-height:25px; text-align:center; color:#231f20; margin:18px 0 0 0}
+.policy-text-2 {font-size:14px; line-height:25px; text-align:center; color:#231f20; position:relative}
+.policy-img-1 {text-align:center}
+.policy-img-1 img {max-width:100%}
+.policy-img-2 {text-align:center}
+.policy-img-2 img {max-width:100%}
+
+.policy-pref {margin:60px 0}
+.policy-pref:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.policy-pref-item {float:left; width:33.33%; padding:0 10px; box-sizing:border-box; text-align:center}
+.policy-pref-item-icon {line-height:117px}
+.policy-pref-item-icon img {vertical-align:bottom}
+.policy-pref-item-title {font-weight:bold; font-size:18px; line-height:22px; padding:24px 0 0 0}
+.policy-pref-item-text {font-size:14px; line-height:22px}
+
+.btn-text-policy {margin:40px 0; text-align:center}
+.btn-text-policy a {display:inline-block; border-radius:7px; background:#0078be; margin:0; text-decoration:none; padding:0 20px; overflow:visible; outline:none; border:1px solid #0078be; height:60px; box-sizing:border-box; color:#fff; text-align:center; font:21px/60px RobotoLight, sans-serif; -webkit-appearance:none; cursor:pointer}
+.btn-text-policy a:hover {opacity:.9}
