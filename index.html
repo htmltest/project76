@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Учет в учреждении | Конструктор учетной политики для бюджетных учреждений</title>
+
+        <!--<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/6711EC4D-8A80-C94C-986F-70899D74154B/main.js" charset="UTF-8"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/js/jquery.ntm.js"></script>
+
+        <link rel="stylesheet" href="/css/theme.css">
+        <link rel="stylesheet" href="/css/add.css"
+        <link rel="stylesheet" href="/css/rx-login.css" />-->
+		
+		<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<!--<script src="js/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="js/popup-show.js"></script>-->
+    </head>
+    <body>
+
+        <script type="text/javascript">
+
+            var pdfClickFlag;
+            var tryauth=0;
+            var link = '';
+            var user_id = 0;
+            var PUB_ID=451;
+            var APP_ID = 151;
+            var EMV_ID = 265;
+            var ID2_SITE_USER_ID = 0;
+            var member_apress=false;
+            var senddata_login=false;
+            var senddata_logout=false;
+            var senddata_apress=false;
+            if (tryauth>3){
+                senddata_login=true;
+            }
+            var aktion = aktion || [];
+            (function(){
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = '//m.action-media.ru/js/all.2.js';
+                var es = document.getElementsByTagName('script')[0];
+                es.parentNode.insertBefore(s, es);
+            })();
+            window.AsyncInit = function () {
+                aktionid.init({
+                    appid: APP_ID,
+                    emid: EMV_ID,
+                    rater: true,
+                    clientcallback: 'clientcallback',
+                    loginblock: 'panelcontainer',
+                    style: 'default',
+                    supportlink: 'https://id2.action-media.ru/Feedback',
+                    reglink: '/reg.html'
+                });
+                aktionid.subscribe("status.auth", "statusAuthCallback");
+                aktionid.subscribe("status.noauth", "statusNoauthCallback");
+                //console.log(aktionid);
+            };
+
+            function statusAuthCallback(o) {
+				console.log("USERID: "+ID2_SITE_USER_ID);
+				console.log("USERID_knop: "+o.user.id);
+
+                if (ID2_SITE_USER_ID == 0 || (ID2_SITE_USER_ID > 0 && ID2_SITE_USER_ID != o.user.id)) {
+					console.log("AuthCallback Try Log: "+o.user.id);
+					ID2_SITE_USER_ID=o.user.id;
+                    doLogin(location.href,o.status,1); // Авторизация на сайте похерилась или произошла "расинхронизация".
+                }else{
+                }
+            }
+
+            function statusNoauthCallback() {
+
+                if (ID2_SITE_USER_ID > 0) {
+                    doLogin(location.href,0,2);
+                }else{
+                }
+            }
+
+            function doLogin(callbackurl,status,adr) {
+                if (adr==1){
+					console.log("Try Log Status: "+senddata_login);
+                    if (senddata_login==false){
+                        senddata_login=true;
+                        location.href = "/?token="+status.token+"&ttl="+status.ttl+"&refer=" + escape(callbackurl);
+                    }
+                }
+                if (adr==2){
+                    if (senddata_logout==false){
+                        senddata_logout=true;
+                        //location.href = "/?act=logout&refer=" + escape(callbackurl);
+                        location.href = "/logout.html?refer=" + escape(callbackurl);
+                    }
+                }
+            }
+
+function send_agregator(array_agregator){
+    array_agregator[3]=escape(array_agregator[3]);
+    aktion.push(array_agregator);
+    if (array_agregator[6]){
+
+    }else
+    {
+        array_agregator[6]='';
+    }
+        
+    $.ajax({
+        type: "POST",
+        url: 'http://www.26-2.ru/site/aggregatorLogger/save',
+        data: {
+            actionType:array_agregator[2],
+            userId:array_agregator[1],
+            category1: array_agregator[4],
+            category2:array_agregator[5],
+            actionValue:array_agregator[6],
+            url:array_agregator[3]
+        },
+        success: function(msg){
+
+        }
+    });        
+}
+        </script> 
+<noindex>
+    <!--<div class="rx-userbar">
+        <div class="rx-userbar-inner">
+            <div class="rx-userbar-left">
+                <div class="rx-logo rx-logo-alpha">&lt;Актион&gt;</div>
+                <div class="siteList">
+                </div>
+            </div>
+            <div class="rx-userbar-right">
+                <div class='blck-pan noclass' id='panelcontainer'>
+                    <div class="rx-auth">
+                        <a href="/reg.html" class="rx-button rx-button-branded" style='line-height: 15px;font-size:11px !important;'>Вход и регистрация</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rx-userbar-placeholder"></div>-->
+</noindex>
+
+
+	<!--<div class="container">
+		<header>
+			<div class="logo">
+				<a href=""><img src="img/logo.png" alt=""></a>
+			</div>
+			<div class="heading">
+				Конструктор учетной политики <span class="heading-small">для бюджетных учреждений</span>
+			</div>
+			<nav>
+				<ul>
+					<li class='current'><a href='/ychetka_4.html'>Сформировать учетную политику</a></li><li><a href='/textpage/about.html'>Читать журнал «Учет в учреждении»</a></li><li><a href='http://podpiska'>Продлить подписку</a></li><li><a href='/textpage/contact.html'>Контакты</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="green-line"></div>
+	</div>-->
+		<header>
+			<div class="container">
+				<!--<div class="logo">
+					<a href=""><span class="logo-title">Конструктор учетной политики</span></a>
+				</div>-->
+				<div class="heading">
+					Конструктор учетной политики
+				</div>
+				<nav>
+					<ul>
+						<li><a href='/textpage/about.html'>О сервисе</a></li>
+						<li class='current'><a href='/ychetka_4.html'>Сформировать</a></li>
+						<li><a href='/textpage/contact.html'>Контакты</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+        <div class='content clear'>    
+            <script>var finval='';</script>
+
+
+
+
+<!--<div class='left' style="padding-top:20px;">
+    			<ul>
+								<li class='current'>
+					<div>Реквизиты учреждения</div>
+					<ul class=''>
+    
+	<li class='active'><a href='/voprosychetka_4_148.html'> Полное наименование учреждения</a></li>	<li class='blocked'><span>Наименование должности руководителя учреждения</span></li>	<li class='blocked'><span>Фамилия и инициалы руководителя учреждения</span></li>	<li class='blocked'><span>Место подписания</span></li>	<li class='blocked'><span>Номер приказа об утверждении учетной политики</span></li>	<li class='blocked'><span>Дата приказа об утверждении учетной политики</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Обособленные подразделения</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Наличие обособленных подразделений</span></li>	<li class='blocked'><span>Учет в обособленных подразделениях учреждения бухгалтерский учет ведут </span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Организация учета</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Бухгалтерский учет ведется</span></li>	<li class='blocked'><span>Электронный документооборот</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Защита и хранение электронных данных</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Защита и хранение электронных данных</span></li>	<li class='blocked'><span>Хранение резервных копий БД</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Рабочий план счетов</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Рабочий план счетов</span></li>	<li class='blocked'><span>Рабочий план счетов на основе Инструкции 174н</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Основные средства</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Объект основных средств</span></li>	<li class='blocked'><span>Формирование инвентарного номера объекта основных средств</span></li>	<li class='blocked'><span>Обозначение инвентарного номера на объекте основного средства </span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Амортизация основных средств</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Амортизация основных средств</span></li>	<li class='blocked'><span>Начисление амортизации при модернизации и реконструкции</span></li>	<li class='blocked'><span>Срок полезного использования объектов основных средств</span></li>	<li class='blocked'><span>Особо ценное имущество</span></li>	<li class='blocked'><span>Учет основных средств на забалансовых счетах</span></li>	<li class='blocked'><span>Учет основных средств по разным источникам финансирования</span></li>	<li class='blocked'><span>Учет отдельных видов основных средств</span></li>	<li class='blocked'><span>Объект и оценка материальных запасов</span></li>	<li class='blocked'><span>Нормы на расходы горюче-смазочных материалов</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Учет материальных запасов</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Списание материальных запасов</span></li>	<li class='blocked'><span>Выдача материалов в эксплуатацию</span></li>	<li class='blocked'><span>Учет материальных запасов по разным источникам финансирования</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Учет запасных частей</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Учет запасных частей</span></li>	<li class='blocked'><span>Какие запасные части подлежат учету</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Учет нефинансовых активов</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Стоимость безвозмездно полученных нефинансовых активов</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Затраты на изготовление готовой продукции, выполнение работ, оказание услуг</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Учет расходов по формированию себестоимости</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Расходы</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Состав прямых затрат</span></li>	<li class='blocked'><span>Состав накладных расходов</span></li>	<li class='blocked'><span>Общехозяйственные расходы</span></li>	<li class='blocked'><span>Распределение общехозяйственных расходов</span></li>	<li class='blocked'><span>Нераспределяемые расходы</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Затраты на реализацию товаров</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Затраты на реализацию товаров</span></li>	<li class='blocked'><span>Списание себестоимости</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Выдача денежных средств подотчетным лицам</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Выдача денежных средств под отчет</span></li>	<li class='blocked'><span>Предельная сумма выдачи средств под отчет</span></li>	<li class='blocked'><span>Срок выдачи денежных средств под отчет</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Возмещение расходов по служебным командировкам</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Расходы по служебным командировкам</span></li>	<li class='blocked'><span>Авансовый отчет</span></li>	<li class='blocked'><span>Задачи служебных командировок</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Выдача доверенностей</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Сроки выдачи доверенностей</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Расчеты по обязательствам</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Расчеты по обязательствам</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Отражение в бухучете расчетов по НДС и налогу на прибыль</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Отражение в бухучете расчетов по НДС и налогу на прибыль</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Создание резервов</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Расходы будущих периодов</span></li>	<li class='blocked'><span>Создание резервов</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Инвентаризация имущества и обязательств</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Инвентаризация имущества</span></li>	<li class='blocked'><span>Инвентаризация расчетов</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Инвентаризация обособленных подразделений</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Инвентаризация обособленных подразделений</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Первичные и сводные учетные документы</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Первичные и сводные учетные документы, бухгалтерские регистры и правила документооборота</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Формирование регистров бухучета</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Формирование регистров</span></li>	<li class='blocked'><span>Первичные и сводные учетные документы</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Бланки строгой отчетности</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Бланки строгой отчетности</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Первичные документы</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Особенности применения первичных документов</span></li>	<li class='blocked'><span>Показатель в табеле учета рабочего времени</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>События после отчетной даты</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Порядок отражения в бухгалтерском учете и отчетности событий после отчетной даты</span></li>	<li class='blocked'><span>Событиями после отчетной даты</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Внутренний финансовый контроль</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Порядок организации и обеспечения внутреннего финансового контроля</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Приложение №1</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Состав комиссии по поступлению и выбытию нефинансовых активов</span></li>	<li class='blocked'><span>Обязанность комиссию</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Сформировать учетную политику</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Сформировать</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Приложение №2</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Состав инвентаризационной комиссии</span></li>	<li class='blocked'><span>Обязанности инвентаризационной комиссии</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Приложение №3</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Состав комиссии по проверке показаний одометров автотранспорта</span></li>	<li class='blocked'><span>Обязанности инвентаризационной комиссии</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Приложение №4</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Состав комиссии для проведения внезапной ревизии кассы</span></li>	<li class='blocked'><span>Обязанности инвентаризационной комиссии</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Приложение №5</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Учет и хранение бланков строгой отчетности</span></li>
+					</ul>
+				</li>
+				<li class=''>
+					<div>Приложение №7</div>
+					<ul class='hidden'>
+    
+	<li class='blocked'><span>Срок службы хозяйственного инвентаря</span></li>
+					</ul>
+				</li>
+
+			</ul>
+			<script type='text/javascript'>
+				$('.left ul div').click(function () { 
+					$('.left ul li').removeClass('current').find('ul').addClass('hidden');
+					$(this).parent().addClass('current').find('ul').removeClass('hidden');
+			    	return false; 
+			    });
+			</script>
+
+</div>-->
+	
+	<h1 class="title-page">Основные средства</h1>
+	<div class='right'>
+
+				<form action="/" method="get" id="vopros">
+					<!--<input name="curvop" value="160" type="hidden">
+					<input name="qtype" value="1" type="hidden">
+					<input name="act" id="act" value="ans" type="hidden">
+					<input name="next_qid" id="next_qid" value="161" type="hidden">
+					<input name="prev_qid" id="prev_qid" value="186" type="hidden">
+					<input name="needans" id="needans" value="yes" type="hidden">
+					<input name="go" id="go" value="ychetka" type="hidden">
+					<input name="ychetka" id="ychetka" value="4" type="hidden">
+
+					<input name="def_val" id="def_val" value=" " type="hidden">-->
+
+
+					<h2>Объект основных средств</h2>
+					<div class="question">
+						<p>Учреждение учитывает в составе основных средств материальные объекты, независимо от их стоимости, со сроком полезного использования более 12 месяцев, 
+						а также:
+						</p>
+					</div>
+					<div class="question">
+						<input id="ans422" value="422" name="ychet[160][425]" class="inprd checkbox check" type="checkbox">
+						<label for="ans422">
+							<p>канцелярские принадлежности с электрическим приводом, а также канцелярские принадлежности, для которых производитель указал в документах гарантийный 
+							срок использования более 12 месяцев</p>
+						</label>
+					</div>			
+					<div class="question">
+							<input id="ans425" value="425" name="ychet[160][425]" class="inprd checkbox check" type="checkbox">
+							<label for="ans425">
+								<p>штампы, печати</p>
+							</label>
+					</div>			
+					<div class="question">
+							<input id="ans424" value="424" name="ychet[160][425]" class="inprd checkbox check" type="checkbox">
+							<label for="ans424">
+								<p>предметы конторского и хозяйственного пользования, многократно используемые в процессе деятельности учреждения, спортивный инвентарь</p>
+							</label>
+					</div>			
+					<div class="question other">
+							<!--<input id="ans423" value="423" name="ychet[160][423]" class="inprd checkbox" type="radio">-->
+							<label for="ans423">
+								<p>Другое <br><input id="other" class="textinput" name="ansval[423]" value="" type="text" placeholder="Например..."></p>
+							</label>
+					</div>
+					
+					<div class="delimiter-line"></div>
+					
+					<h2>Формирование инвентарного номера объекта основных средств</h2>
+        			<div class="question">
+						
+							<input id="ans426" value="426" name="ychet[161]" class="inprd checkbox" type="radio">
+							<label for="ans426">
+								<p>Каждому объекту недвижимого, а также движимого имущества стоимостью свыше 3000 руб. присваивается уникальный инвентарный номер, состоящий из десяти знаков:
+									1-й разряд – амортизационная группа, к которой отнесен объект при принятии к учету (при отнесении инвентарного объекта к 10-й амортизационной группе в данном разряде проставляется «0»);
+									2–4-й разряды – код объекта учета синтетического счета в Плане счетов бухгалтерского учета (приложение 1 к приказу Минфина России от 16 декабря 2010 г. № 174н)
+									5–6-й разряды – код группы и вида синтетического счета Плана счетов бухгалтерского учета (приложение 1 к приказу Минфина России от 16 декабря 2010 г. № 174н);
+									7–10-й разряды – порядковый номер нефинансового актива.
+									Основание: пункт 46 Инструкции к Единому плану счетов № 157н
+								</p>
+							<label>
+					</div>
+					<div class="question">
+							<input id="ans428" value="428" name="ychet[161]" class="inprd checkbox" type="radio">
+							<label for="ans428">
+								<p>При формировании инвентарного номера заложены 
+									следующие информационные показатели:
+									– 1–4-й знаки – год приобретения основных средств (2013, 2014);
+									– 5–9-й знаки – счет бухучета (10104, 10105 и т. п.);
+									– 9-й знак и последующие – порядковые номера объектов основных средств
+								</p>
+							</label>
+					</div>
+					<div class="question">
+							<input id="ans427" value="427" name="ychet[161]" class="inprd checkbox" type="radio">
+							<label for="ans427">
+								<p>Каждому инвентарному объекту недвижимого имущества, а 
+									также движимого имущества, кроме объектов стоимостью до 3000 руб. включительно, присваивается уникальный инвентарный номер из 12 знаков:
+									1–й разряд – код вида финансового обеспечения;
+									2–4-й разряды – коды синтетического счета;
+									5–6-й разряды – коды аналитического счета;
+									7–12-й разряды – порядковый номер объекта в группе (000001–999999)
+								</p>
+							</label>
+					</div>
+  	
+					<div class="explanation">
+						
+					</div>
+					
+					<!--Пагинация-->
+					<div class="navigation another-page">
+						<div class="wrap-prev-next">
+							<a href="#" title="Назад" class="float_l btn_back prev blue-style" onclick="backout(); return false;" style="display: none;"></a>
+							<div class="prompt">Назад</div>
+							<span class="btn_back float_l prev blue-style" style="/*! display: none; */"></span>
+							<div class="prompt">Назад</div>
+						</div>
+						
+						<ul class="pagination">
+							<li>
+								<a href="#" class="pagination-item">1</a>
+							</li>
+							<li class="page-interval">
+								<a href="" class="pagination-item page-interval-link">...</a>
+								<!-- Pop up -->
+								<div class="popup-page">
+									<a href="#" class="popup-link-prev">Реквизиты учреждения</a>
+									<a href="#" class="popup-link-prev">Обособленные подразделения</a>
+									<a href="#" class="popup-link-prev">Организация учета</a>
+									<a href="#" class="popup-link-prev">Защита и хранение электронных данных</a>
+									<a href="#" class="popup-link-prev">Рабочий план счетов</a>
+									<a href="#" class="popup-link-prev">Основные средства</a>
+									<a href="#" class="popup-link-prev">Амортизация основных средств</a>
+									<a href="#" class="popup-link-activ">Учет материальных запасов</a>
+									<a href="#" class="popup-link-next">Учет запасных частей</a>
+									<a href="#" class="popup-link-next">Учет нефинансовых активов</a>
+									<a href="#" class="popup-link-next">Затраты на изготовление готовой продукции, выполнение работ, оказание услуг</a>
+									<a href="#" class="popup-link-next">Расходы</a>
+									<a href="#" class="popup-link-next">Затраты на реализацию товаров</a>
+									<a href="#" class="popup-link-next">Выдача денежных средств подотчетным лицам</a>
+									<a href="#" class="popup-link-next">Возмещение расходов по служебным командировкам</a>
+									<a href="#" class="popup-link-next">Выдача доверенностей</a>
+									<a href="#" class="popup-link-next">Расчеты по обязательствам</a>
+									<a href="#" class="popup-link-next">Отражение в бухучете расчетов по НДС и налогу на прибыль</a>
+									<a href="#" class="popup-link-next">Создание резервов</a>
+									<a href="#" class="popup-link-next">Инвентаризация имущества и обязательств</a>
+									<a href="#" class="popup-link-next">Инвентаризация обособленных подразделений</a>
+									<a href="#" class="popup-link-next">Первичные и сводные учетные документы</a>
+									<a href="#" class="popup-link-next">Сформировать учетную политику</a>
+								</div>
+							</li>
+							<li class="page-activ-prev">
+								<a href="#" class="pagination-item">5</a>
+								<div class="prompt">Раб.план</div>
+							</li>
+							<li class="page-activ">
+								<a href="#" class="pagination-item">6</a>
+								<div class="prompt">Осн.средства</div>
+							</li>
+							<li class="page-activ-next">
+								<a href="#" class="pagination-item">7</a>
+								<div class="prompt">Амортизация</div>
+							</li>
+							<li class="page-interval">
+								<a  href="" class="pagination-item page-interval-link">...</a>
+								<!-- Pop up -->
+								<div class="popup-page">
+									<a href="#" class="popup-link-prev">Реквизиты учреждения</a>
+									<a href="#" class="popup-link-prev">Обособленные подразделения</a>
+									<a href="#" class="popup-link-prev">Организация учета</a>
+									<a href="#" class="popup-link-prev">Защита и хранение электронных данных</a>
+									<a href="#" class="popup-link-prev">Рабочий план счетов</a>
+									<a href="#" class="popup-link-prev">Основные средства</a>
+									<a href="#" class="popup-link-prev">Амортизация основных средств</a>
+									<a href="#" class="popup-link-activ">Учет материальных запасов</a>
+									<a href="#" class="popup-link-next">Учет запасных частей</a>
+									<a href="#" class="popup-link-next">Учет нефинансовых активов</a>
+									<a href="#" class="popup-link-next">Затраты на изготовление готовой продукции, выполнение работ, оказание услуг</a>
+									<a href="#" class="popup-link-next">Расходы</a>
+									<a href="#" class="popup-link-next">Затраты на реализацию товаров</a>
+									<a href="#" class="popup-link-next">Выдача денежных средств подотчетным лицам</a>
+									<a href="#" class="popup-link-next">Возмещение расходов по служебным командировкам</a>
+									<a href="#" class="popup-link-next">Выдача доверенностей</a>
+									<a href="#" class="popup-link-next">Расчеты по обязательствам</a>
+									<a href="#" class="popup-link-next">Отражение в бухучете расчетов по НДС и налогу на прибыль</a>
+									<a href="#" class="popup-link-next">Создание резервов</a>
+									<a href="#" class="popup-link-next">Инвентаризация имущества и обязательств</a>
+									<a href="#" class="popup-link-next">Инвентаризация обособленных подразделений</a>
+									<a href="#" class="popup-link-next">Первичные и сводные учетные документы</a>
+									<a href="#" class="popup-link-next">Сформировать учетную политику</a>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="pagination-item">23</a>
+							</li>
+						</ul>
+						
+						<div class="wrap-prev-next">
+							<a href="#" title="Далее" class="btn_forward float_r next" onclick="backsub(); return false;" style="display: none;"></a>
+							<div class="prompt">Далее</div>
+							<span class="btn_forward float_r next" style="/*display: none;*/"></span>
+							<div class="prompt">Далее</div>
+						</div>
+					
+						<a href="#" title="Сформировать" class="btn_final float_r next" onclick="backsub(); return false;" style="display: none;"></a>
+
+
+					</div>
+				</form>
+			</div>
+			
+			<div class="overlay"></div>
+			
+		</div>
+		
+		<footer class="footer">
+			<div class="container">
+				<div class="service-for">
+					Сервис разработан редакцией ведущих журналов для госучреждений
+				</div>
+				<a href="" class="footer-link">
+					<img src="img/logo1.png" alt="Логотип">
+				</a>
+				<a href="" class="footer-link">
+					<img src="img/logo2.png" alt="Логотип">
+				</a>
+				<a href="" class="footer-link">
+					<img src="img/logo3.png" alt="Логотип">
+				</a>
+			</div>
+		</footer>
+
+<script src="/js/ychetka.js" type="text/javascript"></script>
+
+
+        </div>
+      <!--  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#tree-menu').ntm();
+        $('#tree-menu').find('.current').removeClass('closed').addClass('opened');
+        $('#tree-menu').find('.current').find('ul').show();
+    });
+</script>-->
+
+	<script type="text/javascript">
+	//Переключение видимости скрытого блока
+		$(
+		  function(){ 
+			$(".page-interval-link").click(function(e){
+				e.preventDefault();
+				$(this).siblings(".popup-page").toggleClass("show");	//найдет элементы класса popup-page, которые имеют общих родителей, с элементами класса page-interval-link
+																		//т.е.найдет соседний элемент для "кликнутого" элемента!
+				$(".overlay").toggleClass("show");
+			  }
+			);
+			$(document).on('click', function(e) {
+			  if (!$(e.target).closest(".page-interval").length) {
+				$('.popup-page').removeClass("show");
+				$(".overlay").removeClass("show");
+			  }
+			  e.stopPropagation();
+			});
+		  }
+		)
+	</script>
+
+    </body>
+</html>
+
