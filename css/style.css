@@ -436,7 +436,7 @@ small{
 	width: 100%;
 	background-color: #ffffff;
 	margin:0 auto;
-	padding: 46px 120px 0 120px;
+	padding: 212px 120px 0 120px;
 	box-sizing: border-box;
 	position: relative;
 }
@@ -910,6 +910,7 @@ header {				/*редизайн*/
 	margin-left: 0;
 	margin-right: 0;
 	background-color: #002838;
+    height: 166px; position:fixed; left:0; top:0; right:0; z-index:99
 }
 header > .container, 				/*редизайн*/
 footer > .container
@@ -1026,7 +1027,8 @@ ul.breadcrumbs {
 
 @media (min-width: 240px) and (max-width: 980px)
 {
-	header > .container > nav,
+	header {position:static; left:auto; top:auto; height:auto; right:auto}
+    header > .container > nav,
 	.heading
 	{
 		display: block;
@@ -1183,7 +1185,7 @@ ul.breadcrumbs {
 .btn-next input:hover {opacity:.9}
 .btn-next input:disabled {cursor:default; color:#b4c2cb; border-color:#b4c2cb; opacity:1}
 
-.question-count {position:absolute; right:-160px; top:-396px; width:148px; height:148px; color:#fff; background:url(../img/count.png); text-align:center; font-size:19px; line-height:23px}
+.question-count {position:fixed; right:50%; margin-right:-570px; bottom:144px; width:148px; height:148px; color:#fff; background:url(../img/count.png); text-align:center; font-size:19px; line-height:23px}
 .question-count-text {padding:24px 0 0 0}
 .question-count-text span {display:block; font-size:60px; line-height:60px; font-weight:bold; margin:-3px 0 -6px 0}
 
@@ -1192,13 +1194,10 @@ ul.breadcrumbs {
 .btn-policy a:hover {opacity:.9}
 
 .policy {padding:0 50px}
-.policy-title {text-align:center; color:#000; font:35.5px/43px RobotoBold, sans-serif}
-.policy-text {font-size:17px; line-height:25px; text-align:center; color:#231f20; margin:18px 0 0 0}
-.policy-text-2 {font-size:14px; line-height:25px; text-align:center; color:#231f20; position:relative}
-.policy-img-1 {text-align:center}
-.policy-img-1 img {max-width:100%}
-.policy-img-2 {text-align:center}
-.policy-img-2 img {max-width:100%}
+.policy h1 {margin:0; padding:0; text-align:center; color:#000; font:35.5px/43px RobotoBold, sans-serif}
+.policy h2 {font:17px/25px Arial, sans-serif; text-align:center; color:#231f20; margin:18px 0 0 0; padding:0}
+.policy p {font-size:14px; line-height:25px; text-align:center; color:#231f20; margin:0; padding:0}
+.policy img {max-width:100%; display:block; margin:0 auto}
 
 .policy-pref {margin:60px 0}
 .policy-pref:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
@@ -1211,3 +1210,11 @@ ul.breadcrumbs {
 .btn-text-policy {margin:40px 0; text-align:center}
 .btn-text-policy a {display:inline-block; border-radius:7px; background:#0078be; margin:0; text-decoration:none; padding:0 20px; overflow:visible; outline:none; border:1px solid #0078be; height:60px; box-sizing:border-box; color:#fff; text-align:center; font:21px/60px RobotoLight, sans-serif; -webkit-appearance:none; cursor:pointer}
 .btn-text-policy a:hover {opacity:.9}
+
+.window {position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(180, 194, 203, .60); z-index:999}
+.window-content {position:absolute; left:50%; top:50%; background:#fff; border-radius:4px; box-shadow:0 0 44px rgba(57, 57, 57, .35); transform:translate(-50%)}
+.window-alert {width:500px; text-align:center; padding:19px 0 21px 0}
+.window-alert-text {font-size:21px; line-height:25px; color:#000}
+.window-alert-link {padding:12px 0 0 0}
+.window-alert-link a {display:inline-block; border-radius:7px; background:#fff; padding:0 20px; text-decoration:none; overflow:visible; outline:none; border:1px solid #0078be; height:37px; box-sizing:border-box; color:#0078be; text-align:center; font:17px/35px RobotoLight, sans-serif; -webkit-appearance:none; cursor:pointer}
+.window-alert-link a:hover {opacity:.9}
